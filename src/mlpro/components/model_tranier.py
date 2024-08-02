@@ -23,7 +23,7 @@ class ModelTrainerConfig:
     trained_model_file_path=os.path.join("artifacts","model.pkl")
 
 class ModelTrainer:
-    def _init__(self):
+    def __init__(self):
         self.model_trainer_config=ModelTrainerConfig()
 
     def initiate_model_trainer(self,train_array,test_array):
@@ -40,15 +40,15 @@ class ModelTrainer:
                 "Decision Tree":DecisionTreeRegressor(),
                 "Gradient Boosting":GradientBoostingRegressor(),
                 "Linear Regression":LinearRegression(),
-                "XGB Regressor":XGBRegressor(),
-                "CatBoostingRegressor":CatBoostRegressor(verbose=False),
+                "XGBRegressor":XGBRegressor(),
+                "CatBoosting Regressor":CatBoostRegressor(verbose=False),
                 "AdaBoost Regressor":AdaBoostRegressor()
             }
             params={
                 "Random Forest":{
                     #'critrerion':['squared_error','friedman_mse','absolute_error','poisson'],
                     #'max_features':['sqrt','log2',None],
-                    'n_estimator':[8,16,32,64,128,256]
+                    'n_estimators':[8,16,32,64,128,256]
                 },
 
                 "Decision Tree":{
@@ -73,7 +73,7 @@ class ModelTrainer:
                     'n_estimators':[8,16,32,64,128,256]
                 },
 
-                "CatBoost Regressor":{
+                "CatBoosting Regressor":{
                     'depth':[6,8,10],
                     'learning_rate':[0.01,0.05,0.1],
                     'iterations':[30,50,100]
