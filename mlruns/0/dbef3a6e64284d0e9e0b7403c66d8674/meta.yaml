@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pc/Desktop/mlpro/mlruns/0/dbef3a6e64284d0e9e0b7403c66d8674/artifacts
+end_time: 1722701931527
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: dbef3a6e64284d0e9e0b7403c66d8674
+run_name: languid-lark-341
+run_uuid: dbef3a6e64284d0e9e0b7403c66d8674
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1722701892540
+status: 3
+tags: []
+user_id: root

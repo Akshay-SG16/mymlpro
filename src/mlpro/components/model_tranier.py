@@ -18,6 +18,13 @@ from src.mlpro.logger import logging
 
 from src.mlpro.utils import save_object, evaluate_models
 
+# for integrating with mlflow and dagshub (tu-10):
+from urllib.parse import urlparse
+import mlflow
+import mlflow.sklearn
+import numpy as np
+from sklearn.metrics import mean_squared_error, mean_absolute_error
+
 @dataclass
 class ModelTrainerConfig:
     trained_model_file_path=os.path.join("artifacts","model.pkl")
@@ -25,6 +32,12 @@ class ModelTrainerConfig:
 class ModelTrainer:
     def __init__(self):
         self.model_trainer_config=ModelTrainerConfig()
+
+    def eval_metrics(self,actual,pred):
+        rmse=np.sqrt(mean_squared_error(actual,pred))
+        mae=mean_absolute_error(actual,pred)
+        r2=r2_score(actual,pred)
+        return rmse,mae,r2    
 
     def initiate_model_trainer(self,train_array,test_array):
         try:
@@ -96,6 +109,43 @@ class ModelTrainer:
                 list(model_report.values()).index(best_model_score)
             ]
             best_model=models[best_model_name]
+            print("this is the best model:")
+            print(best_model_name)
+
+            model_names=list(params.keys())
+
+            actual_model=""
+            for model in model_names:
+                if best_model_name==model:
+                    actual_model=actual_model+model
+
+            best_params=params[actual_model]
+
+
+            mlflow.set_registry_uri("https://dagshub.com/akshaygts/mymlpro.mlflow")
+            tracking_url_type_store=urlparse(mlflow.get_tracking_uri()).scheme
+                
+            #MLFLOW:
+
+            with mlflow.start_run():
+                predicted_qualities=best_model.predict(X_test)
+                (rmse,mae,r2)=self.eval_metrics(y_test,predicted_qualities)
+
+                mlflow.log_params(best_params)
+                mlflow.log_metric("rmse",rmse)
+                mlflow.log_metric("mae",mae)
+                mlflow.log_metric("r2",r2)
+
+                
+                #model registry does not work with file store
+                if tracking_url_type_store !="file":
+                    #register the model
+                    mlflow.sklearn.log_model(best_model, "model", registered_model_name=actual_model)
+                else:
+                    mlflow.sklearn.log_model(best_model,"model")
+
+
+
 
             if best_model_score<0.6:
                 raise CustomException("no best model found")

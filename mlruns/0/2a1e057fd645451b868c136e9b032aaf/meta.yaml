@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pc/Desktop/mlpro/mlruns/0/2a1e057fd645451b868c136e9b032aaf/artifacts
+end_time: 1722696903283
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2a1e057fd645451b868c136e9b032aaf
+run_name: gentle-squid-531
+run_uuid: 2a1e057fd645451b868c136e9b032aaf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1722696899739
+status: 4
+tags: []
+user_id: root
