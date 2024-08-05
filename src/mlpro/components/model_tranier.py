@@ -126,8 +126,11 @@ class ModelTrainer:
             tracking_url_type_store=urlparse(mlflow.get_tracking_uri()).scheme
                 
             #MLFLOW:
+            import dagshub
+            dagshub.init(repo_owner='akshaygts', repo_name='mymlpro', mlflow=True)
 
-            with mlflow.start_run():
+
+            with mlflow.start_run() as run:
                 predicted_qualities=best_model.predict(X_test)
                 (rmse,mae,r2)=self.eval_metrics(y_test,predicted_qualities)
 

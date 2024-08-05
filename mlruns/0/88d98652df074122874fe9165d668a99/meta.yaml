@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pc/Desktop/mlpro/mlruns/0/88d98652df074122874fe9165d668a99/artifacts
+end_time: 1722760498989
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 88d98652df074122874fe9165d668a99
+run_name: monumental-elk-292
+run_uuid: 88d98652df074122874fe9165d668a99
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1722760476428
+status: 3
+tags: []
+user_id: root

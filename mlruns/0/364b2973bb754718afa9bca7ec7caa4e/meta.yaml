@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/pc/Desktop/mlpro/mlruns/0/364b2973bb754718afa9bca7ec7caa4e/artifacts
+end_time: 1722762743004
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 364b2973bb754718afa9bca7ec7caa4e
+run_name: victorious-whale-887
+run_uuid: 364b2973bb754718afa9bca7ec7caa4e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1722762735601
+status: 3
+tags: []
+user_id: root
