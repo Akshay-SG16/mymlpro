@@ -26,7 +26,4 @@ By analyzing demographic, lifestyle, and educational attributes, this system can
 - 🔐 Environment management using `.env` and config files  
 - 📦 **Dockerized** for seamless deployment on cloud platforms (AWS)  
 
----
-
-## 🗂️ Project Structure
-
+---                            
